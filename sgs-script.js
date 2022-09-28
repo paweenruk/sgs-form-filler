@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SGS
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.1.1
 // @description  try to take over the world!
 // @author       Paweenruk Kotcharin
 // @match        https://*.bopp-obec.info/sgs/TblTranscripts/*
@@ -26,7 +26,7 @@
     evt.preventDefault();
 
     let currentID = evt.target.id;
-    const inputs = $('input:enabled');
+    const inputs = $('input:enabled').toArray().filter(_input => _input.attributes.hasOwnProperty('onchange'));
     console.log(inputs);
     data.slice(1).forEach((score) => {
       for (let i = 0; i < inputs.length; i++) {
